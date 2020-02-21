@@ -14,15 +14,21 @@ write.csv(vgsales, file = 'vgSales(Cleaned).csv')
 
 vgPub <- group_by(vgsales, Publisher)
 vgPub <- summarise(vgPub, Global_Sales = sum(Global_Sales))
-vgPub <- ungroup(vgPub)  
+vgPub <- ungroup(vgPub) 
+vgPub <- vgPub[with(vgPub, order(-Global_Sales)),]
+write.csv(vgPub, file = 'Publisher_Global_Sales.csv')
 
 vgPlat <- group_by(vgsales, Platform)
 vgPlat <- summarise(vgPlat, Global_Sales = sum(Global_Sales))  
 vgPlat <- ungroup(vgPlat)
+vgPlat <- vgPlat[with(vgPlat, order(-Global_Sales)),]
+write.csv(vgPlat, file = 'Platform_Global_Sales.csv')
 
 vgGenre <- group_by(vgsales, Genre)
 vgGenre <- summarise(vgGenre, Global_Sales = sum(Global_Sales))
 vgGenre <- ungroup(vgGenre)
+vgGenre <- vgGenre[with(vgGenre, order(-Global_Sales)),]
+write.csv(vgGenre, file = 'Genre_Global_Sales.csv')
 
 
 
