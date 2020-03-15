@@ -56,14 +56,51 @@ NintendoYear <- ungroup(NintendoYear)
 write.csv(NintendoYear, file = 'NintendoYear.csv')
 
 OnlyGenre <- group_by(vgsales, Genre)
+
+#Sports top 10 in list
 SportsG <- filter(OnlyGenre, Genre == "Sports")
-SportsG <- SportsG[c(1,2,3,4,5,6,7,8,9,10),]
 SportsG <- group_by(SportsG, Name, Genre)
 SportsG <- summarise(SportsG, Global_Sales = sum(Global_Sales))
 SportsG <- SportsG[with(SportsG, order(-Global_Sales)),]
+SportsG <- SportsG[c(1,2,3,4,5,6,7,8,9,10),]
 SportsG <- ungroup(SportsG)
 write.csv(SportsG, file = 'SportsGenreTop10.csv')
 
+#Action top 10 in list
+ActionG <- filter(OnlyGenre, Genre == "Action")
+ActionG <- group_by(ActionG, Name, Genre)
+ActionG <- summarise(ActionG, Global_Sales = sum(Global_Sales))
+ActionG <- ActionG[with(ActionG, order(-Global_Sales)),]
+ActionG <- ActionG[c(1,2,3,4,5,6,7,8,9,10),]
+ActionG <- ungroup(ActionG)
+write.csv(ActionG, file = 'ActionGenreTop10.csv')
+
+#Adventure top 10 in list
+AdventureG <- filter(OnlyGenre, Genre == "Adventure")
+AdventureG <- group_by(AdventureG, Name, Genre)
+AdventureG <- summarise(AdventureG, Global_Sales = sum(Global_Sales))
+AdventureG <- AdventureG[with(AdventureG, order(-Global_Sales)),]
+AdventureG <- AdventureG[c(1,2,3,4,5,6,7,8,9,10),]
+AdventureG <- ungroup(AdventureG)
+write.csv(AdventureG, file = 'AdventureTop10.csv')
+
+#Role-Playing top 10 in list
+RPG <- filter(OnlyGenre, Genre == "Role-Playing")
+RPG <- group_by(RPG, Name, Genre)
+RPG <- summarise(RPG, Global_Sales = sum(Global_Sales))
+RPG <- RPG[with(RPG, order(-Global_Sales)),]
+RPG <- RPG[c(1,2,3,4,5,6,7,8,9,10),]
+RPG <- ungroup(RPG)
+write.csv(RPG, file = 'RPGTop10.csv')
+
+#Shooting top 10 in list
+ShootG <- filter(OnlyGenre, Genre == "Shooter")
+ShootG <- group_by(ShootG, Name, Genre)
+ShootG <- summarise(ShootG, Global_Sales = sum(Global_Sales))
+ShootG <- ShootG[with(ShootG, order(-Global_Sales)),]
+ShootG <- ShootG[c(1,2,3,4,5,6,7,8,9,10),]
+ShootG <- ungroup(ShootG)
+write.csv(ShootG, file = 'ShootingTop10.csv')
 
 #vgsales$Year <- as.numeric(as.factor(vgsales$Year))
 #vgsales <- na.omit(vgsales)
